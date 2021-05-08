@@ -6,13 +6,11 @@ let selectedSection = ''
 // update which nodes are allowed from current section
 sections.forEach((element) => {
 	element.addEventListener('click', (e) => {
-		// add this section after elected section been set
-		// to prevent having to itterate through nodes twice
+		// clear selection
 		sections.forEach((element) => {
-			// clear selection
 			element.classList.remove('active')
 		})
-		// update selected section here
+		// update selected section
 		if (!e.target.classList.contains('active')) {
 			e.target.classList.add('active')
 			selectedSection = e.target.childNodes[1].innerHTML
@@ -21,14 +19,22 @@ sections.forEach((element) => {
 		Array.from(sensors.childNodes)
 			.filter((node) => node.nodeName === 'DIV')
 			.forEach((sensor) => {
+				if (sensor.id === 'Entrance') {
+					if (selectedSection === 'Electronics') {
+						sensor.innerHTML = '🔻'
+						return
+					}
+					sensor.innerHTML = '🔺'
+					return
+				}
 				if (sensor.id.includes(selectedSection)) {
-					console.log(selectedSection)
-					console.log(sensor.id)
 					sensor.classList.add('allowedNode')
 					sensor.classList.remove('unallowedNode')
+					sensor.innerHTML = '🟣'
 				} else {
 					sensor.classList.add('unallowedNode')
 					sensor.classList.remove('allowedNode')
+					sensor.innerHTML = '⚫'
 				}
 			})
 	})
