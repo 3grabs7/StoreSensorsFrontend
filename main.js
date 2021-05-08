@@ -19,6 +19,8 @@ sections.forEach((element) => {
 		Array.from(sensors.childNodes)
 			.filter((node) => node.nodeName === 'DIV')
 			.forEach((sensor) => {
+				// entrance will add more people to entry section 'electronics'
+				// if other or no section is selected
 				if (sensor.id === 'Entrance') {
 					if (selectedSection === 'Electronics') {
 						sensor.innerHTML = '🔻'
@@ -27,6 +29,7 @@ sections.forEach((element) => {
 					sensor.innerHTML = '🔺'
 					return
 				}
+				// remove pointer-events and black out unallowed nodes
 				if (sensor.id.includes(selectedSection)) {
 					sensor.classList.add('allowedNode')
 					sensor.classList.remove('unallowedNode')
@@ -40,8 +43,7 @@ sections.forEach((element) => {
 	})
 })
 
-const sensors = document.querySelector('.store_sensors')
-console.log(sensors.childNodes)
+// Sensor codes {from}-{to}
 const sensorNames = [
 	'Nopp-Dunder',
 	'Nopp-Kitchen',
@@ -51,12 +53,17 @@ const sensorNames = [
 	'Electronics-Recreation',
 	'Entrance',
 ]
+
+const sensors = document.querySelector('.store_sensors')
+
+// assign ids based on sensorNames
 Array.from(sensors.childNodes)
 	.filter((node) => node.nodeName === 'DIV')
 	.forEach((element, index) => {
 		element.id = sensorNames[index]
 	})
 
+// fetch post on sensor click
 Array.from(sensors.childNodes).forEach((element) => {
 	element.addEventListener('click', (e) => {
 		postLog(e.target.id, selectedSection)

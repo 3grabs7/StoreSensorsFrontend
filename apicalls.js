@@ -1,17 +1,17 @@
-async function postLog(sensor, exitedSection) {
-	if (['Entrance', 'Exit'].includes(sensor)) {
-		var direction = ''
+async function postLog(sensorId, selectedSection) {
+	// entrance will have unique post
+	if (sensorId === 'Entrance') {
 		// Entrance-Exit
 		// Entrance-Enter
-		// check wether exitedsection exists
+		var direction = sensorId.split('-')[1]
 		// var response = await fetch(
-		// 	`https://localhost:42069/api/sensorlog/post?input=${sensor}.${direction}`
+		// 	`https://localhost:42069/api/sensorlog/post?input=${sensorId}.${direction}`
 		// )
 		// console.log(response)
 		return
 	}
-
-	const enteredSection = sensor.replace(exitedSection, '').replace('-', '')
+	// calculate which section is getting entered by removing selected section from sensor id
+	const enteredSection = sensorId.replace(selectedSection, '').replace('-', '')
 
 	// console.log(enteredSection)
 	// console.log(exitedSection)
