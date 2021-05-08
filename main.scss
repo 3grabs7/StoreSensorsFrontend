@@ -1,0 +1,139 @@
+.store {
+	min-height: 400px;
+	min-width: 600px;
+	height: 90vh;
+	width: 135vh;
+	display: flex;
+	flex-direction: column;
+	background-color: yellow;
+
+	&_top {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		border: 2px solid black;
+
+		&_section {
+			border: 1px solid black;
+			flex: 1;
+
+			&:hover {
+				background-color: yellowgreen;
+			}
+		}
+	}
+	&_bottom {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+
+		border: 2px solid black;
+
+		&_section {
+			border: 1px solid black;
+			flex: 1;
+
+			&:hover {
+				background-color: yellowgreen;
+			}
+		}
+	}
+
+	&_sensors {
+		min-height: 400px;
+		min-width: 600px;
+		height: 90vh;
+		width: 135vh;
+		position: absolute;
+		z-index: 1;
+		user-select: none;
+		&_sensor1 {
+			top: 21%;
+			left: 48.5%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 4vh;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+		&_sensor2 {
+			top: 47%;
+			left: 15%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 4vh;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+		&_sensor3 {
+			top: 47%;
+			left: 40%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 4vh;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+		&_sensor4 {
+			top: 47%;
+			left: 57%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 4vh;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+		&_sensor5 {
+			top: 47%;
+			left: 82%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 4vh;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+		&_sensor6 {
+			top: 72%;
+			left: 65.3%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 4vh;
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+		&_sensor7 {
+			top: 94%;
+			left: 48%;
+			position: absolute;
+			cursor: pointer;
+			font-size: 6vh;
+
+			&:hover {
+				transform: scale(1.3);
+			}
+		}
+	}
+}
+
+.sectionName,
+.peopleCount {
+	margin-top: 40px;
+	text-align: center;
+	pointer-events: none;
+	user-select: none;
+}
+
+.active {
+	background-color: red;
+	&:hover {
+		background-color: red;
+	}
+}
