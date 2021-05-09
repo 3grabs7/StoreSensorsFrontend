@@ -20,4 +20,24 @@ async function postLog(sensorId, selectedSection) {
 	// 	`https://localhost:42069/api/sensorlog/post?input=${enteredSection}.${exitedSection}`
 	// )
 	// console.log(response)
+	updateCounts(enteredSection, selectedSection)
+}
+
+async function updateCounts(enteredSection, selectedSection) {
+	// Get affected sections and update their count
+	// const response
+	// const json
+	sections.forEach((section) => {
+		const nodes = Array.from(section.childNodes).filter(
+			(element) => element.nodeName === 'P'
+		)
+		nodes.forEach((node) => {
+			if (node.id === `${selectedSection}Count`) {
+				node.innerHTML = parseInt(node.innerHTML) - 1
+			}
+			if (node.id === `${enteredSection}Count`) {
+				node.innerHTML = parseInt(node.innerHTML) + 1
+			}
+		})
+	})
 }

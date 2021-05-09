@@ -1,6 +1,27 @@
-// remoce global variables later, yeye i know
+// remove global variables later, yeye i know
 const sections = document.querySelectorAll('.section')
 let selectedSection = ''
+
+// section names/id
+const sectionNames = ['Nopp', 'Dunder', 'Kitchen', 'Electronics', 'Recreation']
+let i = 0
+sections.forEach((section) => {
+	const nodes = Array.from(section.childNodes).filter(
+		(element) => element.nodeName === 'P'
+	)
+	// set id for section name and count
+	nodes.forEach((node) => {
+		if (node.classList.contains('sectionName')) {
+			node.id = sectionNames[i]
+			node.innerHTML = sectionNames[i]
+		}
+		if (node.classList.contains('peopleCount')) {
+			node.id = `${sectionNames[i]}Count`
+			node.innerHTML = 0
+			i++
+		}
+	})
+})
 
 // update selected section
 // update which nodes are allowed from current section
@@ -55,7 +76,6 @@ const sensorNames = [
 ]
 
 const sensors = document.querySelector('.store_sensors')
-
 // assign ids based on sensorNames
 Array.from(sensors.childNodes)
 	.filter((node) => node.nodeName === 'DIV')
